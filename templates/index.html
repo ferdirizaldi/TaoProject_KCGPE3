@@ -1,0 +1,228 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <script src="https://cdn.plot.ly/plotly-2.12.1.min.js"></script>
+    
+    <!--Googleのフォント-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti&family=Mochiy+Pop+One&family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>植物の苗の画像認識</title>
+    
+  </head>
+    <body>
+        <div class="authorBox">
+            # -*- coding: utf-8 -*-
+            """
+            Created on Sun Jun 12 20:45:50 2022
+        
+            @author: MSI E20C2022 Rangkuti Ferdi Rizaldi E20C2023 Lin Vincent Antonio プロジェクト演習３KCG
+            """
+        </div>
+        <header>
+            <a href="#" class="logo">TAO</a>
+            <ul>
+                <li><a href="{{ url_for('upload_file') }}">ホーム</a></li>
+                <li><a href="{{ url_for('guidePage') }}">ガイド</a></li>
+                <li><a href="#flexTitle">認識可能な種類</a></li>
+                
+            </ul>
+        
+        </header>
+        
+        <!--Mulai halaman utama1-->
+        <section>
+            <img id="leaf1" src="{{ url_for('static', filename='SiteContent/bgLeaf1.png') }}"/>
+            <img id="leaf2" src="{{ url_for('static', filename='SiteContent/bgLeaf2.png') }}"/>
+            <h2 id="title1"><div id="title1Controller">TAO<br><h5 id="titleDesc">苗画像認識</h5><div></h2>
+            <div class="uploadBox">
+                <h1>画像をアップロード</h1>
+                <form action="/" method=post enctype="multipart/form-data">
+                    <input type="file" name="file" />
+                    <input type="submit" value="アップロード" />
+                </form>
+                 {% for message in get_flashed_messages() %}    
+                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                     {{ message }}
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                     </button>
+                 </div>
+                 {% endfor %}
+            </div> 
+        </section>
+        
+        
+        <!--Tutup halaman utama1-->
+        <hr/>
+            <div>
+                <h1 class="uploadGuide blinkButton"><a href="{{ url_for('guidePage') }}">ガイドを見る</a></h1>
+                
+            </div>
+        <hr/>
+        <div class="parallax">
+            <div id="categoriesSection">
+                <img id="leaf3" class="parallaxImg" src="{{ url_for('static', filename='SiteContent/bgLeaf3.png') }}"/>
+                <img id="leaf4" class="parallaxImg" src="{{ url_for('static', filename='SiteContent/bgLeaf4.png') }}"/>
+                <h2 id="flexTitle">認識可能な種類</h2>
+                
+                <div class="flexboxContainer1">
+                    <div>
+                        <img height="150" width="150" src="{{ url_for('static', filename='SiteContent/Black-grass.png') }}" class="img-thumbnail" />
+                        <h5>Black Grass<br>スズメノテッポウ(雀鉄砲）</h5>
+                    </div>
+                    <div>
+                        <img height="150" width="150" src="{{ url_for('static', filename='SiteContent/Charlock.png') }}" class="img-thumbnail" />
+                        <h5>Charlock<br>ノハラガラシ</h5>
+                    </div>
+                    <div>
+                        <img height="150" width="150" src="{{ url_for('static', filename='SiteContent/Cleavers.png') }}" class="img-thumbnail" />
+                        <h5>Cleavers<br>ヤエムグラ（八重葎）</h5>
+                    </div>
+                    <div>
+                        <img height="150" width="150" src="{{ url_for('static', filename='SiteContent/Common-chickweed.png') }}" class="img-thumbnail" />
+                        <h5>Common Chickweed<br>コハコベ（小繁縷）</h5>
+                    </div>
+                    <div>
+                        <img height="150" width="150" src="{{ url_for('static', filename='SiteContent/Common-wheat.png') }}" class="img-thumbnail" />
+                        <h5>Common Wheat<br>パンコムギ（麺麭小麦）</h5>
+                    </div>
+                    <div>
+                        <img height="150" width="150" src="{{ url_for('static', filename='SiteContent/Fat-Hen.png') }}" class="img-thumbnail" />
+                        <h5>Fat Hen<br>しろざ（白藜）</h5>
+                    </div>
+                </div>
+                <div class="flexboxContainer1">
+                    <div>
+                        <img height="150" width="150" src="{{ url_for('static', filename='SiteContent/Loose-Silkybent.png') }}" class="img-thumbnail" />
+                        <h5>Loose Silkybent<br>セイヨウヌカボ</h5>
+                    </div>
+                    <div>
+                        <img height="150" width="150" src="{{ url_for('static', filename='SiteContent/Maize.png') }}" class="img-thumbnail" />
+                        <h5>Maize<br>トウモロコシ</h5>
+                    </div>
+                    <div>
+                        <img height="150" width="150" src="{{ url_for('static', filename='SiteContent/Scentless-Mayweed.png') }}" class="img-thumbnail" />
+                        <h5>Scentless Mayweed<br>イヌカミツレ（犬加密列)</h5>
+                    </div>
+                    <div>
+                        <img height="150" width="150" src="{{ url_for('static', filename='SiteContent/Sheperds-purse.png') }}" class="img-thumbnail" />
+                        <h5>Sheperds Purse<br>ナズナ(薺)</h5>
+                    </div>
+                    <div>
+                        <img height="150" width="150" src="{{ url_for('static', filename='SiteContent/Small-Flowered-Cranesbill.png') }}" class="img-thumbnail" />
+                        <h5>Small Flowered Cranesbill<br>チゴフウロ</h5>
+                    </div>
+                    <div>
+                        <img height="150" width="150" src="{{ url_for('static', filename='SiteContent/Sugarbeet.png') }}" class="img-thumbnail" />
+                        <h5>Sugarbeet<br>てんさい（甜菜）</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <hr/>
+            <div class="bodyPalsu">
+                <div class="result" id="resultBox">
+                    <h1>結果</h1>
+                    <div class="flexboxContainer2">
+                        <img width='200' height='200' src='{{ image_src }}' />
+                        <div id='resultInfo'>
+                            {% for resultFinal in resultFinal %}  
+                            <h2 id="resultScore">{{resultFinal}}</h2>
+                            {% endfor %}
+                            <h3 id="kjtitle">基本情報<h3>
+                            学名:  {{ resultjl[0][0] }}<br>
+                            名：  {{ resultjl[0][1] }}<br>
+                            種類：  {{ resultjl[0][2] }}<br>
+                            科：  {{ resultjl[0][3] }}<br>
+                            <p class="p1">{{ resultjl[0][4] }}</p>
+                                                
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                    <div id="chartButton" class="blinkButton"><a href="#resultPlot">予測の詳細チャートを見る</a></div>
+                <hr/>
+
+                    <div id='resultPlot'></div>
+                    <!-- ['Black Grass/スズメノテッポウ(雀鉄砲）', 'Charlock/ノハラガラシ', 'Cleavers/ヤエムグラ（八重葎）','Common Chickweed/コハコベ（小繁縷）', 'Common Wheat/パンコムギ（麺麭小麦）', 'Fat Hen/しろざ（白藜）',
+                     'Loose Silky-bent/セイヨウヌカボ', 'Maize/トウモロコシ', 'Scentless Mayweed/イヌカミツレ（犬加密列)','Shepherds Purse/ナズナ(薺)', 'Small-flowered Cranesbill/チゴフウロ', 'Sugar Beet/てんさい（甜菜）'],
+                     -->
+                    <script>
+                            var data = [
+                                          {
+                                            x: {{ pltX|tojson|safe }},
+                                            
+                                            y: {{ pltY }},
+                                            type: 'bar',
+                                            marker: {
+                                                color: '#9dcf7a'
+                                                  }
+                                          }
+                                        ];
+                            var layout = {
+                              title: '認識結果、種類別',
+                              barmode: 'stack',
+                              paper_bgcolor: 'rgba(245,246,249,1)',
+                              plot_bgcolor: 'rgba(245,246,249,1)',
+                              width: 800,
+                              height: 600,
+                              margin: {
+                                l: 100,
+                                r: 100,
+                                b: 100,
+                                t: 200,
+                                pad: 4
+                              },
+                            };
+                            
+                            Plotly.newPlot('resultPlot', data, layout);
+    
+                    </script>
+                
+            </div>
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        </div>
+        
+        {% if scroll %}
+        <script>
+            document.getElementById('{{ scroll }}').scrollIntoView({ block: 'center',  behavior: 'smooth' });
+        </script>
+        {% endif %}
+        
+    </body>
+    <script>
+        var chartButton = document.getElementById("chartButton");
+        var resultBox = document.getElementById("resultPlot");
+        if(resultBox.childNodes.length === 0) {
+            document.getElementById("chartButton").hidden = "true";
+        }
+    </script>
+    <script>
+        let leaf1 = document.getElementById('leaf1');
+        let leaf2 = document.getElementById('leaf2');
+        let leaf3 = document.getElementById('leaf3');
+        let leaf4 = document.getElementById('leaf4');
+
+        window.addEventListener('scroll',function(){
+            let value = window.scrollY;
+            leaf1.style.left = value*0.15 + 'px';
+            leaf2.style.left = -value*0.20 + 'px';
+            leaf3.style.top = -value*0.3 + 'px';
+            leaf4.style.top = -value*0.9 + 'px';
+        })             
+    </script>
+</html>
